@@ -9,6 +9,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import { Howl, Howler } from "howler";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,17 +21,26 @@ export function GeodudeModel(props) {
   const geodudeRightPunch = useRef();
   const rightBicep = useRef();
   const rightforeArm = useRef();
-
   const geodudeLeftPunch = useRef();
   const leftBicep = useRef();
   const leftforeArm = useRef();
 
+  const soundRightPunch = new Howl({
+    src: ["./sounds/mixkit-cartoon-punch-2149.wav"],
+  });
+
+  const soundLeftPunch = new Howl({
+    src: ["./sounds/mixkit-voice-from-effort-to-punch-2174.wav"],
+  });
+
   const animateRightPunch = () => {
     tlRightPunch.current.restart();
+    soundLeftPunch.play();
   };
 
   const animateLeftPunch = () => {
     tlLeftPunch.current.restart();
+    soundRightPunch.play();
   };
 
   useLayoutEffect(() => {
@@ -44,7 +54,7 @@ export function GeodudeModel(props) {
         y: 1,
         ease: "elastic.out(1, 0.3)",
       },
-      0.2
+      0.1
     );
     tlRightPunch.current.to(
       geodudeRightPunch.current.rotation,
@@ -55,7 +65,7 @@ export function GeodudeModel(props) {
         y: Math.PI / -8, // Rotación inversa en el eje Y
         ease: "elastic.out(1, 2)",
       },
-      0.2
+      0.1
     );
     tlRightPunch.current.to(
       rightBicep.current.position,
@@ -64,17 +74,17 @@ export function GeodudeModel(props) {
         x: 0.8,
         ease: "elastic.out(1, 0.3)",
       },
-      0.2
+      0.1
     );
     tlRightPunch.current.to(
       rightBicep.current.rotation,
       {
         duration: 1.8,
-        x: Math.PI / 50,
+        x: Math.PI / 20,
         y: 1,
         ease: "elastic.out(1, 0.1)",
       },
-      0.2
+      0.1
     );
     tlRightPunch.current.to(
       rightforeArm.current.position,
@@ -85,7 +95,7 @@ export function GeodudeModel(props) {
         y: 1.5,
         ease: "elastic.out(1, 0.3)",
       },
-      0.2
+      0.1
     );
     tlRightPunch.current.to(
       rightforeArm.current.rotation,
@@ -95,7 +105,7 @@ export function GeodudeModel(props) {
         x: 7,
         ease: "elastic.out(1, 0.3)",
       },
-      0.2
+      0.1
     );
 
     //Puño izquierdo
@@ -111,7 +121,7 @@ export function GeodudeModel(props) {
         z: -2.6,
         ease: "elastic.out(1, 0.3)",
       },
-      0.5
+      0.15
     );
     tlLeftPunch.current.to(
       geodudeLeftPunch.current.rotation,
@@ -122,7 +132,7 @@ export function GeodudeModel(props) {
         y: -Math.PI / 7, // Rotación inversa en el eje Y
         ease: "elastic.out(1, 6)",
       },
-      0.5
+      0.15
     );
     tlLeftPunch.current.to(
       leftBicep.current.position,
@@ -131,7 +141,7 @@ export function GeodudeModel(props) {
         x: 1.2,
         ease: "elastic.out(1, 0.3)",
       },
-      0.5
+      0.15
     );
     tlLeftPunch.current.to(
       leftBicep.current.rotation,
@@ -141,7 +151,7 @@ export function GeodudeModel(props) {
         y: -1,
         ease: "elastic.out(1, 0.1)",
       },
-      0.5
+      0.15
     );
     tlLeftPunch.current.to(
       leftforeArm.current.position,
@@ -152,7 +162,7 @@ export function GeodudeModel(props) {
         y: 2.7,
         ease: "elastic.out(1, 0.3)",
       },
-      0.5
+      0.15
     );
     tlLeftPunch.current.to(
       leftforeArm.current.rotation,
@@ -163,7 +173,7 @@ export function GeodudeModel(props) {
         y: 2,
         ease: "elastic.out(1, 0.3)",
       },
-      0.5
+      0.15
     );
 
     //Devuelvo animacion del puno derecho
@@ -194,7 +204,7 @@ export function GeodudeModel(props) {
       rightBicep.current.position,
       {
         duration: 1.6,
-        x: -1,
+        x: -2,
         ease: "elastic.out(1, 0.3)",
       },
       0.8
