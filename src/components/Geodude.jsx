@@ -381,10 +381,10 @@ export function GeodudeModel(props) {
       </group>
       <Html position={[0, 0, 0]}>
         <button onClick={animateRightPunch} className="buttonRight">
-          Right Punch
+          A
         </button>
         <button onClick={animateLeftPunch} className="buttonLeft">
-          Left Punch
+          B
         </button>
       </Html>
     </group>
