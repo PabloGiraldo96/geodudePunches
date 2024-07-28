@@ -29,18 +29,18 @@ export function GeodudeModel(props) {
   const pokeBolaRays = useRef();
 
   const soundStart = new Howl({
-    src: ["./sounds/mixkit-interface-option-select-2573.wav"],
+    src: ["./sounds/mixkit-high-tech-bleep-confirmation-2520.wav"],
   });
 
   const soundRightPunch = new Howl({
-    src: ["./sounds/mixkit-cartoon-punch-2149.wav"],
+    src: ["./sounds/mixkit-hard-and-quick-punch-2143.wav"],
   });
 
   const soundLeftPunch = new Howl({
     src: ["./sounds/mixkit-voice-from-effort-to-punch-2174.wav"],
   });
 
-  //soundStart.play();
+  soundStart.play();
 
   const animateRightPunch = () => {
     tlRightPunch.current.restart();

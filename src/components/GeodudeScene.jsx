@@ -27,7 +27,7 @@ export function GeodudeScene(props) {
         />
       </group>
       <group
-        position={[-460.8, 62.24, -697.64]} // moved left 150 units * 4, down 40 units * 4
+        position={[-460.8, 62.24, -697.64]} // moved left 150 units * 4, down 40 units * 4ñ
         rotation={[-1.563, 0, 0]}
         scale={756.72} // scaled by 4
       >
