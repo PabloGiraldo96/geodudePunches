@@ -10,6 +10,7 @@ import { Html, useGLTF } from "@react-three/drei";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { Howl } from "howler";
+import "../index.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +25,8 @@ export function GeodudeModel(props) {
   const geodudeLeftPunch = useRef();
   const leftBicep = useRef();
   const leftforeArm = useRef();
+  const pokeBola = useRef();
+  const pokeBolaRays = useRef();
 
   const soundStart = new Howl({
     src: ["./sounds/mixkit-interface-option-select-2573.wav"],
@@ -37,7 +40,7 @@ export function GeodudeModel(props) {
     src: ["./sounds/mixkit-voice-from-effort-to-punch-2174.wav"],
   });
 
-  soundStart.play();
+  //soundStart.play();
 
   const animateRightPunch = () => {
     tlRightPunch.current.restart();
@@ -311,6 +314,42 @@ export function GeodudeModel(props) {
       },
       0.8
     );
+
+    //    tlRightPunch.current
+    //      .to(pokeBola.current.children[0].material.color, {
+    //        r: 1,
+    //        g: 1,
+    //        b: 1,
+    //        duration: 0.01,
+    //      })
+    //      .to(
+    //        pokeBola.current.children[1].material.color,
+    //        { r: 1, g: 1, b: 1, duration: 0.01 },
+    //        0
+    //      )
+    //      .to(
+    //        pokeBola.current.children[2].material.color,
+    //        { r: 1, g: 1, b: 1, duration: 0.01 },
+    //        0
+    //      )
+    //      .to(pokeBola.current.children[0].material.color, {
+    //        r: 0,
+    //        g: 0,
+    //        b: 0,
+    //        duration: 0.01,
+    //      })
+    //      .to(
+    //        pokeBola.current.children[1].material.color,
+    //        { r: 0, g: 0, b: 0, duration: 0.01 },
+    //        0
+    //      )
+    //      .to(
+    //        pokeBola.current.children[2].material.color,
+    //        { r: 0, g: 0, b: 0, duration: 0.5 },
+    //        0
+    //      );
+    //
+    //    return () => tlRightPunch.kill();
   }, []);
 
   return (
@@ -432,6 +471,7 @@ export function GeodudeModel(props) {
         position={[5.575, 10.187, -16.632]}
         rotation={[0.233, -0.144, -0.363]}
         scale={1.374}
+        ref={pokeBola}
       >
         <mesh
           geometry={nodes.Cube007.geometry}
@@ -454,6 +494,7 @@ export function GeodudeModel(props) {
         <mesh
           geometry={nodes.Cube008.geometry}
           material={materials["Material.021"]}
+          ref={pokeBolaRays}
         />
         <mesh
           geometry={nodes.Cube008_1.geometry}
