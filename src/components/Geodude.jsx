@@ -9,7 +9,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +25,10 @@ export function GeodudeModel(props) {
   const leftBicep = useRef();
   const leftforeArm = useRef();
 
+  const soundStart = new Howl({
+    src: ["./sounds/mixkit-interface-option-select-2573.wav"],
+  });
+
   const soundRightPunch = new Howl({
     src: ["./sounds/mixkit-cartoon-punch-2149.wav"],
   });
@@ -32,6 +36,8 @@ export function GeodudeModel(props) {
   const soundLeftPunch = new Howl({
     src: ["./sounds/mixkit-voice-from-effort-to-punch-2174.wav"],
   });
+
+  soundStart.play();
 
   const animateRightPunch = () => {
     tlRightPunch.current.restart();
@@ -63,7 +69,7 @@ export function GeodudeModel(props) {
         x: -1,
         z: -1,
         y: Math.PI / -8, // Rotación inversa en el eje Y
-        ease: "elastic.out(1, 2)",
+        ease: "elastic.out(1, 0.4)",
       },
       0.1
     );
@@ -182,9 +188,9 @@ export function GeodudeModel(props) {
       geodudeRightPunch.current.position,
       {
         duration: 1.6,
-        x: -1.5,
-        z: 7,
-        y: 1,
+        x: -1,
+        z: 6,
+        y: 2.2,
         ease: "elastic.out(1, 0.3)",
       },
       0.8
@@ -193,10 +199,10 @@ export function GeodudeModel(props) {
       geodudeRightPunch.current.rotation,
       {
         duration: 1.6,
-        x: -4,
-        z: Math.PI / 7,
-        y: -Math.PI / 2,
-        ease: "elastic.out(1, 2)",
+        x: 6,
+        z: -Math.PI / 10,
+        y: -Math.PI / 10,
+        ease: "elastic.out(1, 0.3)",
       },
       0.8
     );
@@ -232,6 +238,71 @@ export function GeodudeModel(props) {
     );
     tlRightPunch.current.to(
       rightforeArm.current.rotation,
+      {
+        duration: 1.6,
+        z: 0,
+        x: 0,
+        ease: "elastic.out(1, 0.3)",
+      },
+      0.8
+    );
+
+    //Devuelvo animacion del puno izuierdo
+
+    tlLeftPunch.current.to(
+      geodudeLeftPunch.current.position,
+      {
+        duration: 1.6,
+        x: 2,
+        z: -5.5,
+        y: 2.5,
+        ease: "elastic.out(1, 0.3)",
+      },
+      0.8
+    );
+    tlLeftPunch.current.to(
+      geodudeLeftPunch.current.rotation,
+      {
+        duration: 1.6,
+        x: 6,
+        z: -Math.PI / 10,
+        y: -Math.PI / 10,
+        ease: "elastic.out(1, 0.3)",
+      },
+      0.8
+    );
+    tlLeftPunch.current.to(
+      leftBicep.current.position,
+      {
+        duration: 1.6,
+        x: -2,
+        ease: "elastic.out(1, 0.3)",
+      },
+      0.8
+    );
+    tlLeftPunch.current.to(
+      leftBicep.current.rotation,
+      {
+        duration: 1.6,
+        x: 0,
+        y: 0,
+        ease: "elastic.out(1, 0.1)",
+      },
+      0.8
+    );
+    tlLeftPunch.current.to(
+      leftforeArm.current.position,
+      {
+        duration: 1.6,
+        x: -1.2,
+        z: -6,
+        y: 2,
+        ease: "elastic.out(1, 0.3)",
+      },
+      0.8
+    );
+    tlLeftPunch.current.to(
+      leftforeArm.current.rotation,
       {
         duration: 1.6,
         z: 0,
